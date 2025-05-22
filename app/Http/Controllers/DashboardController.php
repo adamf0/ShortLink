@@ -20,7 +20,7 @@ class DashboardController extends Controller
             [
                 'slug' => ['required','regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/i','unique:shortlink,slug'],
                 'url' => ['required','regex:/^https?:\/\/[^\s$.?#].[^\s]*$/i'],
-                'file' => ['nullable', 'file', 'max:5120', new SafeFile(['image/jpeg', 'image/png', 'image/gif', 'image/bmp'])],
+                'file' => ['nullable', 'file', 'max:5120'], //, new SafeFile(['image/jpeg', 'image/png', 'image/gif', 'image/bmp'])
             ],
             [
                 'slug.required' => 'Slug wajib diisi.',
