@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ $data->slug }}</title>
+    <title>{{ $data->metaTitle }}</title>
 
     <!-- Open Graph meta tags -->
     <meta property="og:title" content="{{ $data->metaTitle }}">
