@@ -8,7 +8,7 @@
   <meta property="og:title" content="Kanzler im ZDF-Talk: Bedauern über Sozialversicherungsreform &amp; Ausweichen bei Taurus-Frage">
   <meta property="og:description" content="Im ZDF-Talk äußert der Kanzler sein Bedauern darüber, dass die Reform der Sozialversicherungen im Koalitionsvertrag zu kurz kommt. Zudem vermeidet er erneut eine klare Antwort zur Lieferung von Taurus-Marschflugkörpern.">
   <meta property="og:image" content="https://cdc.unpak.ac.id/file/ab75bf28-60f1-4f49-84ff-ca480a0c223c.jpg">
-  <meta property="og:url" content="https://cdc.unpak.ac.id/promo/kanzler-zdf-talk.html">
+  <meta property="og:url" content="https://cdc.unpak.ac.id/redirect/news">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
