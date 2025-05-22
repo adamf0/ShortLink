@@ -22,7 +22,8 @@ class VerifyCsrfToken
      * @var array
      */
     protected $except = [
-        "/redirect"
+        "/redirect",
+        "/create-link"
     ];
 
     /**
