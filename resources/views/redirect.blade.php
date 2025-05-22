@@ -14,7 +14,7 @@
     <meta property="og:image:height" content="400" />
     @endif
     <!-- Optional: Redirect after a few seconds -->
-    <!-- <meta http-equiv="refresh" content="1;url={{ $data->url }}"> -->
+    <meta http-equiv="refresh" content="1;url={{ $data->url }}">
 
 </head>
 <body>
