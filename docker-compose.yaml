@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: laravel_app
+    image: laravel_app_image
+    ports:
+      - "9000:9000"
+    volumes:
+      - .:/var/www
+    networks:
+      - laravel_network
+    depends_on:
+      - db
+      - frontend
+
+  db:
+    image: mysql:latest
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: laravel_db
+      MYSQL_USER: laravel_user
+      MYSQL_PASSWORD: laravel_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - laravel_network
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: react_frontend
+    working_dir: /var/www/frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/var/www
+    command: npm run dev
+    networks:
+      - laravel_network
+    depends_on:
+      - app
+
+networks:
+  laravel_network:
+    driver: bridge
+
+volumes:
+  db_data:
