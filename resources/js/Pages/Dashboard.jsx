@@ -20,7 +20,7 @@ Object.prototype.isEmpty = function() {
 };
 
 function Dashboard() {
-    const [frame, setFrame] = useState(StepEnum.FORM);
+    const [frame, setFrame] = useState(StepEnum.LIST);
     const [type, setType] = useState("Shortlink Single Page");
     const [loading, setLoading] = useState(false);
     const [errList, setErrList] = useState({});
