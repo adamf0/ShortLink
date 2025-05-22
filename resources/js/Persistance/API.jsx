@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:8000"; //https://lapordiri-ppg.unpak.ac.id
+const baseUrl = "https://localhost:9000"; //https://lapordiri-ppg.unpak.ac.id
 
 const apiProduction = axios.create({
     baseURL: baseUrl,
