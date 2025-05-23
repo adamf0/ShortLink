@@ -18,6 +18,6 @@
 
 </head>
 <body>
-    <p>Redirecting to <a href="{{ $data->url }}">{{ $data->url }}</a>...</p>
+    <p>Redirecting to <a href="{{ $data->url }}">{{env("APP_URL")}}{{ $data->url }}</a>...</p>
 </body>
 </html>
