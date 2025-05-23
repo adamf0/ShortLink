@@ -20,9 +20,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if(env('DEPLOY','dev')=='prod'){
+        // if(env('DEPLOY','dev')=='prod'){
             \Illuminate\Support\Facades\URL::forceScheme('https');
-        }
+        // }
         // Inertia::share([
         //     'csrf_token' => function () {
         //         return csrf_token();
