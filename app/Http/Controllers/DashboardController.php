@@ -43,22 +43,22 @@ class DashboardController extends Controller
         }
 
         try {
-            if($request->has("file") && $request->hasFile("file")){
-                $uuid = Uuid::uuid4()->toString();
-                $fileFoto = $uuid.".".strtolower($request->file("file")->getClientOriginalExtension());
-                $request->file("file")->storeAs('/', $fileFoto, ['disk' => "file"]);
+            // if($request->has("file") && $request->hasFile("file")){
+            //     $uuid = Uuid::uuid4()->toString();
+            //     $fileFoto = $uuid.".".strtolower($request->file("file")->getClientOriginalExtension());
+            //     $request->file("file")->storeAs('/', $fileFoto, ['disk' => "file"]);
                 
-                chmod(public_path('file/' . $fileFoto), 0644);
-            }
+            //     chmod(public_path('file/' . $fileFoto), 0644);
+            // }
 
             $data = new Shortlink();
             $data->slug = $request->slug;
             $data->url = $request->url;
             $data->metaTitle = $request->metaTitle;
             $data->metaDesc = $request->metaDesc;
-            if($request->has("file") && $request->hasFile("file")){
-                $data->file = $fileFoto;
-            }
+            // if($request->has("file") && $request->hasFile("file")){
+                $data->file = $request->file;
+            // }
             $data->save();
 
             return response()->json(env("APP_URL")."/redirect/".$request->slug);
