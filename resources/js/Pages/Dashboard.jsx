@@ -207,7 +207,7 @@ function Dashboard() {
                             placeholder="misal: https://google.com" 
                             type="text"
                             value={file}
-                            onChange={(e)=>setUrl(e.target.value)}/>
+                            onChange={(e)=>setFile(e.target.value)}/>
                     </div>
                     <button onClick={SaveHandler} data-slot="button" className={`!rounded-[20px] inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-[color,box-shadow] [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 [&amp;_svg]:shrink-0 outline-none h-9 px-4 py-2 ${loading? "disabled:pointer-events-none disabled:opacity-50 bg-gray-300 hover:bg-gray-400/90 text-gray-400-foreground":"bg-blue-500 hover:bg-blue-700/90 text-white"}`} disabled="">
                         {loading && <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-loader-circle -ms-1 animate-spin" aria-hidden="true"><path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg>}
