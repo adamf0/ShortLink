@@ -61,7 +61,7 @@ class DashboardController extends Controller
             }
             $data->save();
 
-            return response()->json(env("APP_URL")."/".$request->slug);
+            return response()->json(env("APP_URL")."/redirect/".$request->slug);
         } catch (\Throwable $th) {
             return response()->json([
                 "Title" => "dashboard.commonError",
@@ -80,9 +80,9 @@ class DashboardController extends Controller
             return Inertia::render("LinkNotFound",[]); 
         }
 
-        if(!empty($data->file )){
-            $data->file = env("DEPLOY","dev")=="dev"? asset("file/".$data->file):secure_asset("file/".$data->file);
-        }
+        // if(!empty($data->file )){
+        //     $data->file = env("DEPLOY","dev")=="dev"? asset("file/".$data->file):secure_asset("file/".$data->file);
+        // }
 
         return view('redirect', ['data' => $data]);
     }

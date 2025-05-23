@@ -29,9 +29,7 @@ function Dashboard() {
     const [url, setUrl] = useState(null);
     const [metaTitle, setMetaTitle] = useState(null);
     const [metaDesc, setMetaDesc] = useState(null);
-    const fileRef = useRef(null);
     const [file, setFile] = useState(null);
-    const [filePreview, setFilePreview] = useState(null);
 
     const [result, setResult] = useState(null);
 
@@ -46,18 +44,6 @@ function Dashboard() {
         { label: "Landing Page MovieHUB", desc: "Generate LP MovieHUB", icon: <GrStatusUnknown className='text-2xl font-bold'/>, disable: true },
         { label: "TWT Random Link", desc: "Generate Hanya Untuk Penggunaan TWT", icon: <GrStatusUnknown className='text-2xl font-bold'/>, disable: true }
     ];
-
-    const handleFileChange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            setFile(file);
-            setFilePreview(file?.name ?? "");
-            setErrList(prev => {
-                const { file, ...rest } = prev;
-                return rest;
-            });
-        }
-    };
 
     async function SaveHandler(){
         setLoading(true)
@@ -206,44 +192,22 @@ function Dashboard() {
                             value={metaDesc}
                             onChange={(e)=>setMetaDesc(e.target.value)}/>
                     </div>
-                    <div className="flex flex-col gap-2">
+                    <div className="*:not-first:mt-2">
                         <label 
                             data-slot="label" 
                             className="text-foreground text-sm leading-4 font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50" 
                             for=":S1:">
-                            Image Cover
-                        </label> 
-                        <div role="button" onClick={() => fileRef.current?.click()} className="border-input hover:bg-accent/50 data-[dragging=true]:bg-accent/50 has-[input:focus]:border-ring has-[input:focus]:ring-ring/50 relative flex min-h-52 flex-col items-center justify-center overflow-hidden rounded-xl border border-dashed p-4 transition-colors has-disabled:pointer-events-none has-disabled:opacity-50 has-[img]:border-none has-[input:focus]:ring-[3px]">
-                            <input
-                                ref={fileRef}
-                                type="file"
-                                accept="image/jpeg, image/png, image/gif, image/bmp"
-                                className="hidden"
-                                onChange={handleFileChange}
-                            />
-                            <div className="flex flex-col items-center justify-center px-4 py-3 text-center">
-                                <div className="bg-background mb-2 flex size-11 shrink-0 items-center justify-center rounded-full border" aria-hidden="true">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-image-up size-4 opacity-60" aria-hidden="true"><path d="M10.3 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10l-3.1-3.1a2 2 0 0 0-2.814.014L6 21"></path><path d="m14 19.5 3-3 3 3"></path><path d="M17 22v-5.5"></path><circle cx="9" cy="9" r="2"></circle></svg>
-                                </div>
-                                <p className="mb-1.5 text-sm font-medium">Drop your image here or click to browse</p>
-                                <p className="text-muted-foreground text-xs">Max size: 5MB</p>
-                            </div>
-                        </div>
-                        {filePreview && 
-                        <div className="bg-background flex items-center justify-between gap-2 rounded-lg border p-2 pe-3">
-                            <div className="flex items-center gap-3 overflow-hidden">
-                                <div className="flex aspect-square size-10 shrink-0 items-center justify-center rounded border">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-file-text size-4 opacity-60" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
-                                </div>
-                                <div className="flex flex-col gap-0.5">
-                                    <p className="truncate text-[13px] font-medium m-0">{filePreview}</p>
-                                    {/* <p className="text-muted-foreground text-xs m-0">516.34KB</p> */}
-                                </div>
-                            </div>
-                            <button data-slot="button" className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-[color,box-shadow] disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] text-muted-foreground/80 hover:text-foreground -me-2 size-8 hover:bg-transparent" aria-label="Remove file">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-x size-4" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
-                            </button>
-                        </div>}
+                            File URL
+                            <span className="text-red-500"> *</span>
+                        </label>
+                        <input 
+                            data-slot="input" 
+                            className="border-input file:text-foreground placeholder:text-muted-foreground/70 flex h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-sm shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive" 
+                            id=":S1:" 
+                            placeholder="misal: https://google.com" 
+                            type="text"
+                            value={file}
+                            onChange={(e)=>setUrl(e.target.value)}/>
                     </div>
                     <button onClick={SaveHandler} data-slot="button" className={`!rounded-[20px] inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-[color,box-shadow] [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 [&amp;_svg]:shrink-0 outline-none h-9 px-4 py-2 ${loading? "disabled:pointer-events-none disabled:opacity-50 bg-gray-300 hover:bg-gray-400/90 text-gray-400-foreground":"bg-blue-500 hover:bg-blue-700/90 text-white"}`} disabled="">
                         {loading && <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-loader-circle -ms-1 animate-spin" aria-hidden="true"><path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg>}
