@@ -18,6 +18,6 @@
 
 </head>
 <body>
-    <p>Redirecting to <a href="{{ $data->url }}">https://cdc.unpak.ac.id{{ $data->url }}</a>...</p>
+    <p>Redirecting to <a href="{{ $data->url }}">{{ $data->url }}</a>...</p>
 </body>
 </html>

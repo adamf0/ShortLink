@@ -71,7 +71,7 @@ function Dashboard() {
             if (response.status === 200 || response.status === 204) {
                 alert("berhasil simpan data")
                 setFrame(StepEnum.DONE)
-                setResult(response?.data);
+                setResult(`https://cdc.unpak.ac.id`+response?.data);
             }
         } catch (error) {
             // console.error(error.response?.data)
