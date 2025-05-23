@@ -30,8 +30,8 @@ class DashboardController extends Controller
                 'url.required' => 'URL wajib diisi.',
                 'url.regex' => 'Format URL tidak valid. Harus dimulai dengan http:// atau https://',
 
-                'file.file' => 'File harus berupa berkas yang valid.',
-                'file.max' => 'Ukuran file maksimal 5MB.',
+                // 'file.file' => 'File harus berupa berkas yang valid.',
+                // 'file.max' => 'Ukuran file maksimal 5MB.',
             ]
         );
 
